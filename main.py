@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import send_from_directory
 
 from flask_restful import Resource
 from flask_restful import Api
@@ -10,6 +11,8 @@ api = Api(app)
 
 images = {}
 
+import cv2
+
 class Image(Resource):
 
     def get(self, image_id):
@@ -19,9 +22,10 @@ class Image(Resource):
         return {image_id : images[image_id]}
 
     def post(self):
-        image_id = str(len(images) + 1)
-        images[image_id] = request.form["data"]
-        return {image_id : images[image_id]}
+
+        image_name = request.form["data"]
+        return send_from_directory("results", image_name, as_attachment = True)
+
 
 
 api.add_resource(Image,  "/" , "/<string:image_id>")
