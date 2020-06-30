@@ -22,6 +22,9 @@ import os
 class Image(Resource):
 
     def get(self, image_id):
+        #this get wont do anything at the momment.
+        # Its for future reference.
+
         if image_id not in images.keys():
             return {"result" : "No image found with id {}".format(image_id)}
 
