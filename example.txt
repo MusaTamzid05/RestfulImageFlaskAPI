@@ -1,0 +1,4 @@
+get => curl http://localhost:5000/1
+post =>  curl http://localhost:5000 -d "data=image1" -X POST
+
+from => https://dev.to/aligoren/building-basic-restful-api-with-flask-restful-57oh
